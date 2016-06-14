@@ -1,0 +1,1 @@
+1. Is it good design to track who has weapon from ouside or from Warrior itself ?

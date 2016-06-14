@@ -1,0 +1,19 @@
+Crust: Thickness: THICK, 
+Ingredients: { 
+	[Name: White Flour, Name: Cornmeal] 
+}, 
+Base: {
+	Name: Quattro Fromagia, 
+	Ingredients: { 
+		[Name: Olive oil, Name: Garlic, Name: White Cheddar, Name: Provolone, Name: Mozzarella, Name: Ricotta] 
+	}
+}, 
+Toppings: { 
+	[
+		{ Class: GarlicTopping, Price Catagory: INEXPENSIVE }, 
+		{ Class: AvocadoTopping, Price Catagory: EXPENSIVE }, 
+		{ Class: ShrimpTopping, Price Catagory: EXPENSIVE }, 
+		{ Class: ChickenTopping, Price Catagory: MODERATE }
+	] 
+}
+

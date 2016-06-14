@@ -1,0 +1,80 @@
+﻿@model PersonalGPATracker.Models.Course
+
+@{
+    ViewBag.Title = "Editing Course " + Model.Code;
+}
+
+<h2>@ViewBag.Title</h2>
+<form method="post" action="/course/editcourse">
+    <div class="form-horizontal">
+
+        <input type="hidden" name="oldCode" value="@Model.Code"/>
+
+        <div class="form-group">
+            <label for="Code" class="control-label col-md-2">Code:</label>
+            <div class="col-md-10">
+                <input type="text" id="Code" name="Code" value ="@Model.Code" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Title" class="control-label col-md-2">Title:</label>
+            <div class="col-md-10">
+                <input type="text" id="Title" name="Title" value ="@Model.Title" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="CreditHours" class="control-label col-md-2">Credit Hours:</label>
+            <div class="col-md-10">
+                <select id="CreditHours" name="CreditHours" value ="@Model.CreditHours" class="form-control">
+                    @for (var option = 1; option <= 6; option++)
+                    {
+                        if (option != Model.CreditHours)
+                        {
+                            <option value="@option">@option</option>
+                        }
+                        else
+                        {
+                            <option value="@option" selected>@option</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="LetterGrade" class="control-label col-md-2">Letter Grade:</label>
+            <div class="col-md-10">
+                <select id="LetterGrade" name="LetterGrade" value ="@Model.LetterGrade" class="form-control">
+                    @{ 
+                        string[] grades = {
+                            "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "F", "U" };
+                    }
+
+                    @foreach (var grade in grades)
+                    {
+                        if (grade != Model.LetterGrade)
+                        {
+                            <option value="@grade">@grade</option>
+                        }
+                        else
+                        {
+                            <option value="@grade" selected>@grade</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update Course" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    @Html.ActionLink("Back to Course List", "Index", "Home")
+</div>

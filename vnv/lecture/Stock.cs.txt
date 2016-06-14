@@ -1,0 +1,117 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace ShoppingCartModel
+{
+    public class Stock
+    {
+        public ICollection<IStockedItem> StockedItems { get; private set; }
+
+        public Stock(ICollection<IStockedItem> stockedItems = null)
+        {
+            if(stockedItems == null)
+            {
+                stockedItems = new List<IStockedItem>();
+            }
+            StockedItems = stockedItems;
+        }
+
+        public int GetTotalNumberOfItemsInStock()
+        {
+            var total = 0;
+            foreach (var item in StockedItems)
+            {
+                total += item.AmountInStock;
+            }
+            return total;
+        }
+
+        public decimal GetTotalPriceOfAllItems()
+        {
+            var total = 0.0m;
+            foreach (var item in StockedItems)
+            {
+                total += (item.UnitPrice * item.AmountInStock);
+            }
+            return total;
+        }
+
+        public void SortByName()
+        {
+            var listOfItems = StockedItems.ToList();
+            listOfItems.Sort(new SortByNameComparer());
+            StockedItems.Clear();
+            foreach(var item in listOfItems)
+            {
+                StockedItems.Add(item);
+            }
+        }
+
+        public void SortByTotalPrice()
+        {
+            var listOfItems = StockedItems.ToList();
+            listOfItems.Sort(new SortByTotalPriceComparer());
+            StockedItems.Clear();
+            foreach (var item in listOfItems)
+            {
+                StockedItems.Add(item);
+            }
+        }
+
+        public int GetNumberOfStockedItems()
+        {
+            return StockedItems.Count();
+        }
+
+        public IItem[] SellItem(string itemName, int count)
+        {
+            var item = StockedItems.First(itm => itm.Name == itemName);
+            if(count > item.AmountInStock)
+            {
+                throw new InvalidOperationException(
+                    "Not enough items in stock");
+            }
+            item.AmountInStock -= count;
+            IItem[] items = new IItem[count];
+            for(var i = 0; i < count; i++)
+            {
+                items[i] = item.CreateItem();
+            }
+            return items;
+        }
+
+        public void restockItem(string itemName, int count)
+        {
+            var item = StockedItems.First(itm => itm.Name == itemName);
+            item.AmountInStock += count;
+        }
+
+        private class SortByNameComparer : IComparer<IStockedItem>
+        {
+            public int Compare(IStockedItem x, IStockedItem y)
+            {
+                return x.Name.CompareTo(y.Name);
+            }
+        }
+
+        private class SortByTotalPriceComparer : IComparer<IStockedItem>
+        {
+            public int Compare(IStockedItem x, IStockedItem y)
+            {
+                var value = 0;
+                if(x.UnitPrice * x.AmountInStock > 
+                    y.UnitPrice * y.AmountInStock)
+                {
+                    value = 1;
+                }
+                else if(x.UnitPrice * x.AmountInStock <
+                    y.UnitPrice * y.AmountInStock)
+                {
+                    value = -1;
+                }
+                return value;
+            }
+        }
+    }
+}

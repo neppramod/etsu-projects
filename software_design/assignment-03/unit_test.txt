@@ -1,0 +1,33 @@
+Pizza: 
+	Crust: {
+		Thickness: THICK, 
+		Ingredients: { 
+			[
+				Name: Cornmeal
+			] 
+		}
+	}, 
+	Base: {
+		Name: Quattro Fromagia, 
+		Ingredients: { 
+			[
+				Name: Garlic, 
+				Name: White Cheddar, 
+				Name: Provolone, 
+				Name: Mozzarella, 
+				Name: Ricotta
+			] 
+		}
+	}, 
+	Toppings: { 
+		[
+			Name: Pepperoni, 
+			PriceCatagory: EXPENSIVE, 
+			IsMeatSeaFood: false, 
+			Ingredients: { 
+				[
+					Name: Pepperoni
+				] 
+			}
+		] 
+	}

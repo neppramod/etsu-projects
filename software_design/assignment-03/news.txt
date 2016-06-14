@@ -1,0 +1,22 @@
+more regarding assignment 3Actions for more regarding assignment 3	Feb 24, 2015 10:03 PM
+Are we supposed to add the attributes for nutritional, cost, and source information?  
+
+No, you're not supposed to add the attributes; that was just mentioned by way of additional information.  Maybe I'll ask people to do this in a subsequent design or implementation; we'll see.
+
+Also, it says "each layer has a crust" - is that supposed to be some kind of pizza that has more than one pizza.  I don't understand how we would've known any of this from the directions and information given.
+
+As for the multi-layer pizza requirement, the following is straight from the spec:
+
+Level 4 (8 points):  your design handles level 3 and also supports a Giordano's classic:  i.e., the stacking of up to 4 layers of a patron's choice in a single pizza.
+ 
+Try searching on "multi-layer pizza" in images.google.com.
+questions about assignment 3Actions for questions about assignment 3	Feb 22, 2015 7:42 PM
+One-layer pizza? Does it just have crust?
+
+Each layer has a crust, a base, and at least one topping.
+
+What is the arugula class constructor?  I don't understand.
+
+Arugula is a type of salad green that's used as a pizza topping.   The idea is to treat each topping as a separate class; doing so would allow you to attribute the topping objects with (e.g.) nutritional, cost, and source information, by way of putting the completed pizza structure to other uses.
+
+

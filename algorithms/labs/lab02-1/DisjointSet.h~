@@ -1,0 +1,13 @@
+#ifndef DISJOINT_SET_H
+#define DISJOINT_SET_H
+
+#include "List.h"
+#include <vector>
+
+using namespace std;
+
+class DisjointSet {
+  public vector<List> lists;
+};
+
+#endif

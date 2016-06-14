@@ -1,0 +1,9 @@
+min 3st + 5sy + yt + 2ty + 6tx + 6yz + 7zx + 4yx
+s.t.
+st + sy = 1
+tx + yx + zx = 1
+st + yt - ty - tx = 0
+sy + ty - yt - yx - yz = 0
+yz - zs + xz - zx = 0
+end
+inte 10

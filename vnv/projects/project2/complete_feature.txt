@@ -1,0 +1,27 @@
+Features complete (Scenarios)
+=============================
+1. Delete a course
+	a. Delete a course and make sure it is deleted from the list
+	b. Go back to list without deleting
+	
+2. View a course
+	a. Go to home after viewing a course
+	b. View a delete page
+	
+3. Edit a course
+	a. Edit a course
+	b. Go to home without updating a course
+	
+4. Add New Course Feature 
+	a. Add a course
+	b. Go back to course list without adding a course
+	
+6. Title bar feature
+	a. Go to add course page 
+	b. Remain in home page
+	
+5. List
+	a. Update Total GPA
+	b. View Details of a course
+	c. View row of an added course
+	

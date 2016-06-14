@@ -1,0 +1,20 @@
+HW 2 Distributed
+
+D • Combile the two programs from Homework 1 into one program
+D • When the main program starts up, it should start the client code in its own thread
+D• Server starts before client code
+D • Lable screen message Server: or Client:
+D • Use portnums file for server for lower and upper bound for port numbers
+
+Client
+D . Commandline parameters are no longer used.
+. Use one of the nodes in list of connections (implemented in Homework 1).
+. This list should be now stored in a text file called neighbors on exit.
+. If the file does not exist or it's empty, prompt the user for the name of a server and port number.
+. When a client sends first message (type 0) to another node send its name in domainName and portnumber; that other node should record it in its list.
+. Be sure to only record these requests once in the list - a node might get several connections over time from same client, so check list for no duplicates
+
+Client
+D . Client should present a simple menu of choices on standard input, asking for either a query or to exit.
+D . Simply send a sample query to the other node and get a sample response.
+D . When the client quits, the server does not - it needs to be killed manually.

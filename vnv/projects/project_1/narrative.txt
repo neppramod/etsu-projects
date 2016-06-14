@@ -1,0 +1,104 @@
+Warrior
+=======
+hitPoints: Amount of damage a warrior can take. Starts with 100, vanquished when reached 0
+meleePower: This represents power of melee attacks (1 to 20)
+magicPower: This represents power of magic attack (1 to 15
+defencePercentage: This mitigates the damage taken from an opponent warrior (0% to 100%).
+
+# Types of Warriors: Melee warrior and Magic Warrior
+# All warriors start with a defense of 0%.
+
+Melee warriors
+==============
+# Melee warriros start with melee power in the range of 5 to 10 and magic power in the range of 1 to 3
+# When within melee range, these warriors have an 80% change of attacking with melee, a 10% change of attacking with magic and a 10% change of missing.
+# When within magic range, they have a 60% chance of attacking with magic and a 40% chance of missing
+
+Magic warriros
+==============
+# Magic warriors start with magic power in the range of 3 to 8 and melee power in the range of 1 to 3.
+# When within magic range, these warriors have a 90% chance of attacking with magic and a 10% chance of missing.
+# When within melee range, these warriors have an 80% chance of attacking with magic, a 10% chance of attacking with melee, and a 10% chance of missing.
+
+Note : Melee attacks can only be executed adjacent to the opponent while magic attacks can be executed from a distance.
+
+Sword
+=====
+# One melee warrior from each army is allowed a sword.
+# A sword has a melee power in the range of 3 to 6.
+# A warrior's melee power is increased by the swords melee power when that warriro has a sword.
+# If that warriro is vanquished, the sword falls to the ground.
+# Any melee warriro that moves to that cell will automatically pick up the sword if the warrior does not currently have a sword
+
+Staff
+=====
+# One magic warrior from each army is allowed a staff.
+# A staff has a magic power in the range of 2 to 4
+# A warriro's magic power is increased by the staff's magic power when that warrior has a staff.
+# If that warriro is vanquished, the staff falls to the ground.
+# Any magic warrior that moves to that cell will automatically pick up that staff if the warriro does not currently have a staff
+
+
+# Damage
+========
+Damage to an opponent is calculated with:
+1. Melee damage = melee power - (opponent's defense percentage * melee power)
+2. Magic damage = magic power - (opponent's defense percentage * magic power)
+
+# Power increase
+================
+Vanquish opponent
+-----------------
+# After a warrior vanquishes an opponent, the various powers increase by a factor
+# Defense percentage increases by 1%.
+# In melee warriors, melee power increases by 1 and magic power increases by .25.
+# In magic warriors, magic power increases by 1 and melee power increases by .25
+
+Attack
+------
+# After a warrior attacks an opponent, the attack powers of the attacker increase by a factor.
+# In melee warriros, melee power increases by .5 and magic power increases by .125
+# In magic warriors, magic power increases by .5 and melee power increases by .125
+
+Get attacked
+------------
+# After a warrior gets attacked, defense percentage of the attacked warrior increases by .25% (the warrior learns to defend)
+# After a warrior moves, defense power increases by .125% (the warrior learns to evade).
+
+Player
+======
+# Two
+# Control army of 6 warriros
+
+Play
+----
+# Each player decides how many of each warrior type he/she will need.
+# At the start of the game each player takes turn positioning her/his warriors at opposite ends of the field.
+# The warriors can be placed in any configuraion, at any position, in the top 2 rows or at the bottom two rows.
+# After the warriors are positioned, the players take turns moving and attacking with their warriors.
+# Each player has two moves per turn
+    - move-move, move-attack, attack-move, or attack-attack.
+    - At each move, a player may "look at statistics," "move", "attack", or "surrender"
+
+Moving
+------
+# Warriors may move to an unoccupied cell in any direction. The battlefield is enclosed so they cannot move off it.
+
+Attacking
+----------
+# Melee attacks only affect a warrior in an adjacent cell
+# Magic attacks affect warriors in an adjacent cell or two cells away.
+# If the target is two cells away and there is a warriro in the way, that warrior is not affected.
+# A player may attack any cell inclusive of the cell of the attacking warrior.
+# Warriors may vanquish their own warriors inclusive of themselves
+
+Winning
+-------
+# The winner of the game is the player with at least one warrior left on the field.
+# If all warriors cannot be vanquished then the player with the most warriors is the winner, a tie otherwise.
+# A player also wins if the other player "surrenders".
+    
+
+Board
+=====
+Size: 6x6

@@ -1,0 +1,66 @@
+﻿// Post: getCurrentLetter() == "A"
+var Letters = function () {
+    var _currentLetter = "A";
+	
+	// Post: getCurrentLetter() == letter
+	this.setCurrentLetter = function(letter){
+		_currentLetter = letter;
+	};
+
+	// Post: None
+    this.getCurrentLetter = function () {
+        return _currentLetter;
+    };
+
+	// Post: getCurrentLetter()@Pre == "Z" -> getCurrentLetter() == "A"
+	//       getCurrentLetter()@Pre != "Z" -> getCurrentLetter() == getCurrentLetter()@Pre + 1
+    this.moveToNextLetter = function () {
+        if (_currentLetter !== "Z") {
+            var code = _currentLetter.charCodeAt(0);
+            _currentLetter = String.fromCharCode(code + 1);
+        } else {
+            _currentLetter = "A";
+        }
+    };
+
+	// Post: getCurrentLetter()@Pre == "A" -> getCurrentLetter() == "Z"
+	//       getCurrentLetter()@Pre != "A" -> getCurrentLetter() == getCurrentLetter()@Pre - 1 
+    this.moveToPrecedingLetter = function () {
+        if (_currentLetter !== "A") {
+            var code = _currentLetter.charCodeAt(0);
+            _currentLetter = String.fromCharCode(code - 1);
+        } else {
+            _currentLetter = "Z";
+        }
+    };
+
+	// Post: getCurrentLetter() == "Z" -> getNextLetter() == "A"
+	//       getCurrentLetter() != "Z" -> getNextLetter() == getCurrentLetter() + 1
+	//       getCurrentLetter() == getCurrentLetter()@Pre
+    this.getNextLetter = function () {
+        var nextLetter;
+        if (_currentLetter !== "Z") {
+            var code = _currentLetter.charCodeAt(0);
+            nextLetter = String.fromCharCode(code + 1);
+        } else {
+            nextLetter = "A"
+        }
+        return nextLetter;
+    };
+
+	// Post: getCurrentLetter() == "Y" -> getLetterAfterNext() == "A"
+	//       getCurrentLetter() == "Z" -> getLetterAfterNext() == "B"
+	//       getCurrentLetter() != "Y" and getCurrentLetter() != "Z" 
+	//            -> getLetterAfterNext() == getCurrentLetter() + 1
+	//       getCurrentLetter() == getCurrentLetter()@Pre
+    this.getLetterAfterNext = function () {
+        var zCode = "Z".charCodeAt(0);
+        var aCode = "A".charCodeAt(0);
+        var code = _currentLetter.charCodeAt(0);
+        var nextCode = code + 2;
+        if (nextCode > zCode) {
+            nextCode = aCode + (nextCode - zCode - 1);
+        }
+        return String.fromCharCode(nextCode);
+    };
+};

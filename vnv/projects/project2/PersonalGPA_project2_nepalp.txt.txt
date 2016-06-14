@@ -1,0 +1,13 @@
+
+Course is hosted at https://nepalp@bitbucket.org/nepalp/nepalp-csci5220-assignment-2.git
+Username: nepalp 
+
+Assumptions
+===========
+
+1. Used specific port of 9090 define in properties of PersonalGPATracker project.
+2. URL_PORT defines the URL in GPATrackerCoursePage class in TestingFramework project.
+3. Created single GPATrackerCoursePage.cs TestingFramework file and single Chrome.cs WebDriverFramework files.
+4. For totalGPA calculation and totalQualityPoints in UpdateTotalGPA test used a range of floating point values close to expected value.
+5. Created a function with Given attribute that adds a seed course before start of operations that requires previous value to exist. This function does what Add feature would do in multiple functions.
+6. For checking whether a course exists in the list, the table row count of 1 (that only contains the headers) is considered as empty and count of rows that is greater than 1 is considered as having course entries. For asserting the value, I read whole table row along with edit, details link. Earlier I was just checking for the course code. This makes it easy to assert edit and added values.

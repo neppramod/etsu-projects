@@ -1,0 +1,25 @@
+max psv1 + psv2
+s.t.
+psv1 <= 16
+psv2 <= 13
+pv1v3 <= 12
+pv2v1 <= 4
+pv2v4 <= 14
+pv3v2 <= 9
+pv3t <= 20
+pv4v3 <= 7
+pv4t <= 4
+psv1 + pv2v1 - pv1v3 = 0
+psv2 + pv3v2 - pv2v1 - pv2v4 = 0
+pv1v3 + pv4v3 - pv3v2 - pv3t = 0
+pv2v4 - pv4v3 - pv4t = 0
+psv1 >= 0
+psv2 >= 0
+pv1v3 >= 0
+pv2v1 >= 0
+pv2v4 >= 0
+pv3t >= 0
+pv3v2 >= 0
+pv4v3 >= 0
+pv4t >= 0
+end

@@ -1,0 +1,65 @@
+﻿@model PersonalGPATracker.Models.CourseList
+
+@{
+    ViewBag.Title = "Course List and GPA";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Add New Course", "Add", "Course")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Code
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            Credit Hours
+        </th>
+        <th>
+            Letter Grade
+        </th>
+        <th>
+            Grade Points
+        </th>
+        <th>
+            Quality Points
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Courses) {
+    <tr>
+        <td>
+            @item.Code
+        </td>
+        <td>
+            @item.Title
+        </td>
+        <td>
+            @item.CreditHours
+        </td>
+        <td>
+            @item.LetterGrade
+        </td>
+        <td>
+            @item.GradePoints
+        </td>
+        <td>
+            @string.Format("{0:0.0}", item.QualityPoints)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "Course", new { id=item.Code }, null) |
+            @Html.ActionLink("Details", "Details", "Course", new { id = item.Code }, null) |
+            @Html.ActionLink("Delete", "Delete", "Course", new { id = item.Code }, null)
+        </td>
+    </tr>
+}
+
+</table>
+
+<h1>Total GPA: @string.Format("{0:0.00}", Model.TotalGPA)</h1>

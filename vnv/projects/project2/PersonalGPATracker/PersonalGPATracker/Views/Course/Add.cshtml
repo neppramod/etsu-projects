@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Add New Course";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<form method="post" action="/course/addcourse">
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            <label for="Code" class="control-label col-md-2">Code:</label>
+            <div class="col-md-10">
+                <input type="text" id="Code" name="Code" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Title" class="control-label col-md-2">Title:</label>
+            <div class="col-md-10">
+                <input type="text" id="Title" name="Title" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="CreditHours" class="control-label col-md-2">Credit Hours:</label>
+            <div class="col-md-10">
+                <select id="CreditHours" name="CreditHours" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="LetterGrade" class="control-label col-md-2">Letter Grade:</label>
+            <div class="col-md-10">
+                <select id="LetterGrade" name="LetterGrade" class="form-control">
+                    <option value="A">A</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B">B</option>
+                    <option value="B-">B-</option>
+                    <option value="C+">C+</option>
+                    <option value="C">C</option>
+                    <option value="C-">C-</option>
+                    <option value="D+">D+</option>
+                    <option value="D">D</option>
+                    <option value="F">F</option>
+                    <option value="U">U</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add Course" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    @Html.ActionLink("Back to Course List", "Index", "Home")
+</div>
+

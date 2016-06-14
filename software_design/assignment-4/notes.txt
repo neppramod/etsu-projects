@@ -1,0 +1,88 @@
+Title   Start Date
+Assignment 4 due dateActions for Assignment 4 due date  Mar 7, 2015 3:39 AM
+i don't plan to call for assignment 4 until I grade and return assignment 3.
+
+I don't expect to start grading assignment 3 until Sunday afternoon at the soonest.
+
+The Rise and Fall of CORBAActions for The Rise and Fall of CORBA        Mar 7, 2015 3:19 AM
+After class on Thursday, Jason Bunn sent me a link to an article, "The Rise and Fall of Corba", by Michi Henning, co-author of Advanced Corba Programming in C++.  I agree with Jason's comments that the article is an interesting and worthwhile read.  Some key points:
+
+CORBA's future in 1998 looked "cosy", thanks to support for C, Java, and C++
+The technology started to decline shortly thereafter, due to a failure to produce a robust component model
+attempt #1, the Common Business Object Facility, "bogged down in political infighting"
+attempt #2, the CORBA Component Model,
+was large and complex
+was never implemented, note ven as a proof of concept
+was technically immature, to the point of being 
+impossible to implement or
+non-portable
+was never implemented by any vendor
+had been superseded by EJB by the time of its publication
+Other issues that led to CORBA's devolution into a niche technology include
+high cost: on the order of several thousand dollars for commercial implementations
+steep learning curve
+bug-riddled initial implementations
+Microsoft's promotion of DCOM instead of CORBA
+... which also failed to gain traction outside of the Microsoft community
+XML and SOAP, which also competed with CORBA as a middleware standard
+the early 2000's collapse of the dot com industry, which terminated a host of CORBA startups
+In retrospect,
+The most important factors in CORBA's failure included
+its technical complexity, due to
+the tendency of industry consortia to try to please all participants by supporting all proposals
+the lack of a screening process for consortia participants and user requests
+the lack of a requirement for reference implementations as a prerequisite for proposals
+vendor interest in promoting their products at the expense of quality:  i.e., 
+a lack of a basis for cooperation and trust among competing vendors
+its lack of built-in support for on-wire security and object versioning:  two "showstoppers", in Henning's words
+Other key issues included
+inherent lack of support for high-performance event processing
+lack of support for data compression, leading to poor performance on WANs
+lack of support for threading
+lack of support for asynchronous server-side dispatch
+lack of mappings C#, VB
+lack of support for .NET
+assignment 4, problem 13Actions for assignment 4, problem 13    Mar 7, 2015 3:17 AM
+Do we allow only qualifiers to be in uppercase and lowercase:  e.g.,
+
+g = person_set([('Jalaj', 'Nautiyal')])
+g.FiRst.Jalaj      # ok
+g.LaST.Nautiyal   # ok
+G.first.jalaj    # not supported
+
+Yes.
+
+Can you give me an example of a list of pairs with names omitted?
+
+consider  p =  person_set([('George', 'W', 'Bush'), ('Barak', 'H', 'Obama')])
+Then 
+-.  omitting first should return [('W', 'Bush'), ('H', 'Obama')]
+-.  omitting middle should return [('George', 'Bush'), ('Barak', 'Obama')]
+-.  omitting last should return [('George', 'W'), ('Barak', 'H')]
+
+Corrections to assignment 4Actions for Corrections to assignment 4      Mar 5, 2015 9:53 PM
+problem 2c) - 2605-7 => 2601-3
+
+Brad Combs => Brad Cross (urk!)
+
+assignment 4: additional help session tonight, 7:40-pm-ish, 455 / tomorrow's classActions for assignment 4: additional help session tonight, 7:40-pm-ish, 455 / tomorrow's class        Mar 4, 2015 1:17 PM
+Tonight, Wednesday 3/4.  Since some of my students in 5910 (capstone) have indicated that they'd like additional assistance with assignment 4, I've agreed to stay tonight after class to host a help session.  The timetable is this:  5-7 pm, CSCI 5910;  7 pm to roughly 7:45 pm, makeup talks for 5520; then help session.  The ground rules for the help session: I'll answer questions, but people have to ask them.  
+
+Tomorrow, Thursday 3/5.  I'm very much hoping that we'll have class tomorrow night, weather forecast notwithstanding.  I guess we'll have to see what ETSU does -- and, if the weather turns nasty and we meet in spite of that, I'll do another webcast.  I'll inform people by e-mail as to what we'll be doing as we learn more about the weather.
+No after-class office hours on Thursday, 5 MarchActions for No after-class office hours on Thursday, 5 March    Mar 3, 2015 5:50 AM
+Enjoy the break.  I'll be away in Pittsburgh, but will continue to read and respond to e-mails throughout break.
+
+Assignment 4 deadlineActions for Assignment 4 deadline  Mar 2, 2015 3:09 PM
+I have already heard from three people besides myself, we are very worried about completing this assignment by Sunday.  As well as not having in class time to ask questions after we start the assignment and attempt each problem.
+
+The concerns are fair.  I think we'll have a better sense of what will be a reasonable deadline after Thursday's working session.
+
+Questions about assignment 4Actions for Questions about assignment 4    Mar 2, 2015 3:03 PM
+Problem 2: "Which of the three assignments in lines ..., if any, affect a common variable?"   I'm not sure what's meant here. Are you meaning a variable common to all three?
+
+A variable common to two or three of the three.
+
+Assignment 4 updatedActions for Assignment 4 updated    Mar 2, 2015 3:02 PM
+Problem 2:  The original specified lines 2585-7 - same as b).  The updated specifies 2605-7.
+
+Problem 3:  The new spec clarifies that update_values should take two parameters - a new value for each of the two variables.

@@ -1,0 +1,232 @@
+﻿using Moq;
+using NUnit.Framework;
+using ShoppingCartModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace ShoppingCartUnitTesting
+{
+    [TestFixture]
+    public class AStockObject
+    {
+        [Test]
+        public void ShouldHaveZeroItemsInStockWhenConstructedWithEmptyCollection()
+        {
+            var sut = new Stock();
+            Assert.That(sut.GetTotalNumberOfItemsInStock(), Is.EqualTo(0));
+        }
+
+        [Test]
+        public void ShouldHaveFiveItemsInStock()
+        {
+            var mockItem = new Mock<IStockedItem>();
+            mockItem.SetupProperty(o => o.AmountInStock, 5);
+
+            var collection = new List<IStockedItem>();
+            collection.Add(mockItem.Object);
+
+            var sut = new Stock(collection);
+            Assert.That(sut.GetTotalNumberOfItemsInStock(), Is.EqualTo(5));
+        }
+
+        [Test]
+        public void ShouldHaveFiftyItemsInStock()
+        {
+            var mockItem1 = new Mock<IStockedItem>();
+            mockItem1.SetupProperty(o => o.AmountInStock, 5);
+            var mockItem2 = new Mock<IStockedItem>();
+            mockItem2.SetupProperty(o => o.AmountInStock, 45);
+
+            var collection = new List<IStockedItem>();
+            collection.Add(mockItem1.Object);
+            collection.Add(mockItem2.Object);
+
+            var sut = new Stock(collection);
+            Assert.That(sut.GetTotalNumberOfItemsInStock(), Is.EqualTo(50));
+        }
+
+        [Test]
+        public void ShouldHaveZeroTotalPriceForAllItemsWhenConstructedWithEmptyCollection()
+        {
+            var sut = new Stock();
+            Assert.That(sut.GetTotalPriceOfAllItems(), Is.EqualTo(0.0m));
+        }
+
+        [Test]
+        public void ShouldHaveFiveDollarsAsTotalPriceForAllItemsInStock()
+        {
+            var mockItem = new Mock<IStockedItem>();
+            mockItem.SetupProperty(o => o.AmountInStock, 5);
+            mockItem.SetupProperty(o => o.UnitPrice, 1.0m);
+
+            var collection = new List<IStockedItem>();
+            collection.Add(mockItem.Object);
+
+            var sut = new Stock(collection);
+            Assert.That(sut.GetTotalPriceOfAllItems(), Is.EqualTo(5.0m));
+        }
+
+        [Test]
+        public void ShouldHaveFiftyDollarsAsTotalPriceForAllItemsInStock()
+        {
+            var mockItem1 = new Mock<IStockedItem>();
+            mockItem1.SetupProperty(o => o.AmountInStock, 10);
+            mockItem1.SetupProperty(o => o.UnitPrice, 1.0m);
+            var mockItem2 = new Mock<IStockedItem>();
+            mockItem2.SetupProperty(o => o.AmountInStock, 20);
+            mockItem2.SetupProperty(o => o.UnitPrice, 2.0m);
+
+            var collection = new List<IStockedItem>();
+            collection.Add(mockItem1.Object);
+            collection.Add(mockItem2.Object);
+
+            var sut = new Stock(collection);
+            Assert.That(sut.GetTotalPriceOfAllItems(), Is.EqualTo(50.0m));
+        }
+
+        [Test]
+        public void CanBeSortedByName()
+        {
+            var mockItem1 = new Mock<IStockedItem>();
+            mockItem1.SetupProperty(o => o.Name, "Zzzz");
+            var mockItem2 = new Mock<IStockedItem>();
+            mockItem2.SetupProperty(o => o.Name, "Aaaa");
+
+            var collection = new List<IStockedItem>();
+            collection.Add(mockItem1.Object);
+            collection.Add(mockItem2.Object);
+
+            var sut = new Stock(collection);
+            Assert.That(sut.StockedItems.ElementAt(0).Name, 
+                Is.GreaterThan(sut.StockedItems.ElementAt(1).Name));
+            sut.SortByName();
+            Assert.That(sut.StockedItems.ElementAt(0).Name, 
+                Is.LessThan(sut.StockedItems.ElementAt(1).Name));
+        }
+
+        [Test]
+        public void CanBeSortedByTotalPrice()
+        {
+            var mockItem1 = new Mock<IStockedItem>();
+            mockItem1.SetupProperty(o => o.AmountInStock, 20);
+            mockItem1.SetupProperty(o => o.UnitPrice, 2.0m);
+            var mockItem2 = new Mock<IStockedItem>();
+            mockItem2.SetupProperty(o => o.AmountInStock, 10);
+            mockItem2.SetupProperty(o => o.UnitPrice, 1.0m);
+
+            var collection = new List<IStockedItem>();
+            collection.Add(mockItem1.Object);
+            collection.Add(mockItem2.Object);
+
+            var sut = new Stock(collection);
+            var item0 = sut.StockedItems.ElementAt(0);
+            var item1 = sut.StockedItems.ElementAt(1);
+            Assert.That(
+                item0.AmountInStock * item0.UnitPrice,
+                Is.GreaterThan(item1.AmountInStock * item1.UnitPrice));
+            sut.SortByTotalPrice();
+            item0 = sut.StockedItems.ElementAt(0);
+            item1 = sut.StockedItems.ElementAt(1);
+            Assert.That(
+                item0.AmountInStock * item0.UnitPrice,
+                Is.LessThan(item1.AmountInStock * item1.UnitPrice));
+        }
+
+        [Test]
+        public void ShouldReportZeroUniqueItemsInStockWhenConstructedWithEmptyCollection()
+        {
+            var sut = new Stock();
+            Assert.That(sut.GetNumberOfStockedItems(), Is.EqualTo(0));
+        }
+
+        [Test]
+        public void ShouldReportTwoUniqueItemsInStock()
+        {
+            var mockItem1 = new Mock<IStockedItem>();
+            var mockItem2 = new Mock<IStockedItem>();
+
+            var collection = new List<IStockedItem>();
+            collection.Add(mockItem1.Object);
+            collection.Add(mockItem2.Object);
+
+            var sut = new Stock(collection);
+            Assert.That(sut.GetNumberOfStockedItems(), Is.EqualTo(2));
+        }
+
+        [Test]
+        public void ShouldSellTenItems()
+        {
+            var mockItem1 = new Mock<IStockedItem>();
+            mockItem1.SetupProperty(o => o.Name, "someItem");
+            mockItem1.SetupProperty(o => o.AmountInStock, 20);
+            mockItem1.SetupProperty(o => o.UnitPrice, 2.0m);
+
+            var collection = new List<IStockedItem>();
+            collection.Add(mockItem1.Object);
+
+            var sut = new Stock(collection);
+            var items = sut.SellItem("someItem", 10);
+            Assert.That(items.Length, Is.EqualTo(10));
+            mockItem1.Verify(o => o.CreateItem(), Times.Exactly(10));
+        }
+
+        [Test]
+        public void ShouldNotSellItemThatDoesNotExist()
+        {
+            var mockItem1 = new Mock<IStockedItem>();
+            mockItem1.SetupProperty(o => o.Name, "someItem");
+
+            var collection = new List<IStockedItem>();
+            collection.Add(mockItem1.Object);
+
+            var sut = new Stock(collection);
+            Assert.That(() => sut.SellItem("someItm", 10),
+                Throws.TypeOf<InvalidOperationException>());
+        }
+
+        [Test]
+        public void ShouldNotSellItemIfThereIsNotEnough()
+        {
+            var mockItem1 = new Mock<IStockedItem>();
+            mockItem1.SetupProperty(o => o.Name, "someItem");
+            mockItem1.SetupProperty(o => o.AmountInStock, 5);
+
+            var collection = new List<IStockedItem>();
+            collection.Add(mockItem1.Object);
+
+            var sut = new Stock(collection);
+            Assert.That(() => sut.SellItem("someItem", 10),
+                Throws.TypeOf<InvalidOperationException>());
+        }
+
+        [Test]
+        public void ShouldUpdateAmountInStockOfSpecifiedItem()
+        {
+            var mockItem1 = new Mock<IStockedItem>();
+            mockItem1.SetupProperty(o => o.Name, "someItem");
+            mockItem1.SetupProperty(o => o.AmountInStock, 0);
+
+            var collection = new List<IStockedItem>();
+            collection.Add(mockItem1.Object);
+
+            var sut = new Stock(collection);
+            sut.restockItem("someItem", 5);
+            mockItem1.Verify(o => o.AmountInStock);
+        }
+
+        [Test]
+        public void ShouldNotUpdateAmountInStockIfTheItemWasNotFound()
+        {
+            var mockItem1 = new Mock<IStockedItem>();
+            mockItem1.SetupProperty(o => o.Name, "someItem");
+
+            var collection = new List<IStockedItem>();
+            collection.Add(mockItem1.Object);
+
+            var sut = new Stock(collection);
+            Assert.That(() => sut.SellItem("someItm", 10),
+                Throws.TypeOf<InvalidOperationException>());
+        }
+    }
+}

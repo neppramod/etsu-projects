@@ -1,0 +1,14 @@
+https://aws.amazon.com/ebs/
+http://www.howtogeek.com/school/using-windows-admin-tools-like-a-pro/lesson4/
+https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/3/html/System_Administration_Guide/s1-raid-approaches.html
+http://www.tldp.org/HOWTO/LVM-HOWTO/benefitsoflvmsmall.html
+
+1. "Amazon Elastic Block Store (EBS) – Block Storage." Amazon Web Services, Inc. Web. 14 Mar. 2016. <https://aws.amazon.com/ebs/>
+2. "Windows Admin: Understanding Hard Drive Partitioning with Disk Management." HowTo Geek RSS. 01 May 2014. Web. 14 Mar. 2016. <http://www.howtogeek.com/school/using-windows-admin-tools-like-a-pro/lesson4/> 
+
+
+"Amazon Elastic Block Store (EBS) – Block Storage." Amazon Web Services, Inc. Web. 14 Mar. 2016.
+
+"Windows Admin: Understanding Hard Drive Partitioning with Disk Management." HowTo Geek RSS. 01 May 2014. Web. 14 Mar. 2016. <http://www.howtogeek.com/school/using-windows-admin-tools-like-a-pro/lesson4/>
+
+"3.3. Hardware RAID versus Software RAID." Hardware RAID versus Software RAID. Web. 14 Mar. 2016.

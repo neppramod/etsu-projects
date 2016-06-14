@@ -1,0 +1,10 @@
+﻿namespace ShoppingCartModel
+{
+    public interface IStockedItem
+    {
+        IItem CreateItem();
+        string Name { get; set; }
+        int AmountInStock { get; set; }
+        decimal UnitPrice { get; set; }
+    }
+}

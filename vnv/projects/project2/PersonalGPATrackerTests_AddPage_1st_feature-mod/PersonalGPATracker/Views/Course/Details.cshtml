@@ -1,0 +1,50 @@
+﻿@model PersonalGPATracker.Models.Course
+
+@{
+    ViewBag.Title = "Details of course: " + Model.Code;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Code:
+        </dt>
+
+        <dd>
+            @Model.Code
+        </dd>
+
+        <dt>
+            Title:
+        </dt>
+
+        <dd>
+            @Model.Title
+        </dd>
+
+        <dt>
+            Credit Hours:
+        </dt>
+
+        <dd>
+            @Model.CreditHours
+        </dd>
+
+        <dt>
+            Letter Grade:
+        </dt>
+
+        <dd>
+            @Model.LetterGrade
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", "Course", new { id = Model.Code }, null) |
+    @Html.ActionLink("Delete", "Delete", "Course", new { id = Model.Code }, null) |
+    @Html.ActionLink("Back to Course List", "Index", "Home")
+</p>
